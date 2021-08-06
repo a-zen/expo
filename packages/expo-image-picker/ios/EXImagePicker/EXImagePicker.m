@@ -42,7 +42,8 @@ UM_EXPORT_MODULE(ExponentImagePicker);
                             @"allowsEditing": @NO,
                             @"base64": @NO,
                             @"videoMaxDuration": @0,
-                            @"videoQuality": @0
+                            @"videoQuality": @0,
+                            @"presentationStyle": @UIModalPresentationPageSheet,
                             };
     self.shouldRestoreStatusBarVisibility = NO;
   }
@@ -209,7 +210,7 @@ UM_EXPORT_METHOD_AS(launchImageLibraryAsync, launchImageLibraryAsync:(NSDictiona
     
     self.picker.videoMaximumDuration = videoMaxDuration;
     
-    self.picker.modalPresentationStyle = UIModalPresentationPageSheet;
+    self.picker.modalPresentationStyle = [self.options valueForKey:@"presentationStyle"];
     self.picker.delegate = self;
 
     [self maybePreserveVisibilityAndHideStatusBar:[[self.options objectForKey:@"allowsEditing"] boolValue]];
